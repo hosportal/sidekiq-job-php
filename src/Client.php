@@ -127,9 +127,11 @@ class Client
      */
     private function atomicPush($jobId, $class, $args = [], $queue = self::QUEUE, $retry = true, $doAt = null)
     {
+        /* OUTDATED SIDEKIQ SPEC
         if (array_values($args) !== $args) {
             throw new Exception('Associative arrays in job args are not allowed');
         }
+        */
 
         if (!is_null($doAt) && !is_float($doAt) && is_string($doAt)) {
             throw new Exception('at argument needs to be in a unix epoch format. Use microtime(true).');
